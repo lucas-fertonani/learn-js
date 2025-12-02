@@ -195,3 +195,69 @@ const resultado = lista.reduce(
 )
 
 console.log(resultado)
+
+
+
+// Templates Literals
+
+const num_cartao = 543279326534
+console.log(`o numero do seu cartao eh: ${num_cartao}`)
+
+
+
+// Promises
+// Promises ve se o codigo vai dar reject ou uma response 
+// entao ficara assim:
+
+// .then => response
+// .catch => reject
+// fetch => localizar a informacao da string
+// finally => vai ser executado indepedente se response ou reject
+const multiplicacao_1 = (a, b) => new Promise((response, reject) => {
+  setTimeout(() => {
+    response(a * b)
+  }, 2000);
+})
+
+console.log(multiplicacao(5, 2))
+  // .then(result => {
+  //   console.log(result)
+  // })
+
+fetch('https://jsonplaceholder.typicode.com/posts/1')
+  .then((response) => {
+      response.json().then(body => {
+      console.log(body);
+    })
+  })
+  
+  .catch(reject => {
+    console.log(reject)
+  })
+
+  .finally(
+    console.log('Status code: 201')
+  )
+
+
+// Exportation and Importation in node.js
+
+import { multiplicacao } from "../modules/modules";
+console.log(multiplicacao(4 , 5))
+
+import { divisao } from "../modules/modules";
+console.log(divisao(10 , 2))
+
+// Default Exportation
+// Import uma funcao de um unico pacote
+
+import potencia from "./unic_module/unique_module";
+console.log(potencia(3,3))
+
+// Import all modules
+import * as modules from '../modules/modules';
+console.log(modules)
+
+// Rename a module
+import { multiplicacao as multiplication } from "../modules/modules";
+console.log(multiplication(3, 2))
